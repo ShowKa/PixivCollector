@@ -1,0 +1,53 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'jetty'
+
+// JDK 8
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+ 
+	compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.0.1'
+	compile group: 'org.yaml', name: 'snakeyaml', version: '1.16'
+	compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.7.0'
+
+	// test
+	testCompile group: 'junit', name: 'junit', version: '4.11'
+	testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+	testCompile group: 'org.jmockit', name: 'jmockit', version: '1.27'		
+	
+}
+
+// Embeded Jetty for testing
+jettyRun{
+	contextPath = "PixivCollector"
+	httpPort = 8080
+}
+
+jettyRunWar{
+	contextPath = "PixivCollector"
+	httpPort = 8080
+}
+
+//For Eclipse IDE only
+eclipse {
+
+  wtp {
+    component {
+      //define context path, default to project folder name
+      contextPath = 'PixivCollector'
+    }
+
+    classpath {
+        defaultOutputDir = file('src/main/webapp/WEB-INF/classes')
+    }
+  }
+}
+
