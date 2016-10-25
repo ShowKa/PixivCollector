@@ -32,6 +32,28 @@ public class TUtil {
 	}
 
 	/**
+	 * 
+	 * @param className
+	 * @param driver
+	 * @param wait
+	 * @return
+	 */
+	public static WebElement findElementByClassName(String className, WebDriver driver, Wait<WebDriver> wait) {
+		return driver.findElement(By.className(className));
+	}
+
+	/**
+	 * 
+	 * @param xPath
+	 * @param driver
+	 * @param wait
+	 * @return
+	 */
+	public static WebElement findElementByXPath(String xPath, WebDriver driver, Wait<WebDriver> wait) {
+		return driver.findElement(By.xpath(xPath));
+	}
+
+	/**
 	 * Link(Anchor) クリック
 	 * 
 	 * @param id
@@ -252,5 +274,4 @@ public class TUtil {
 		}
 		return formList;
 	}
-
 }

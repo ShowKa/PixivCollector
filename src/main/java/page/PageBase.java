@@ -24,6 +24,14 @@ public abstract class PageBase {
 		return TUtil.findElement(id, driver, wait);
 	}
 
+	public WebElement findElementByClass(String className) {
+		return TUtil.findElementByClassName(className, driver, wait);
+	}
+
+	public WebElement findElementByXPath(String xPath) {
+		return TUtil.findElementByXPath(xPath, driver, wait);
+	}
+
 	public void clickLink(String id) {
 		TUtil.clickLink(id, driver, wait);
 	}
