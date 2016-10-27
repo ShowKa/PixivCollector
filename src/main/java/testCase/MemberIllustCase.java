@@ -26,7 +26,8 @@ public class MemberIllustCase extends TestCaseBase {
 		driver.get(url);
 		MemberIllustPage illustPage = new MemberIllustPage(driver);
 		illustPage.clickThumbnail(1);
-
-		TUtil.sleep();
+		TUtil.sleep(1000);
+		illustPage.clickLayoutThumbnail();
+		TUtil.sleep(10000);
 	}
 }
