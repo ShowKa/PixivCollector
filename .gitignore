@@ -13,3 +13,7 @@ hs_err_pid*
 /build/
 /bin/
 /evidence/
+
+# Gradle
+.gradle
+!gradle-wrapper.jar
