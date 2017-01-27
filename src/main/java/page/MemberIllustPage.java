@@ -28,4 +28,9 @@ public class MemberIllustPage extends PageBase {
 		WebElement element = findElementByXPath("//div[@class='_layout-thumbnail ui-modal-trigger']");
 		element.click();
 	}
+
+	public String getOriginalIllustSrc() {
+		WebElement element = findElementByXPath("//img[@class='original-image']");
+		return element.getAttribute("src");
+	}
 }

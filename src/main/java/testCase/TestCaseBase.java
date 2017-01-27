@@ -8,7 +8,9 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -32,8 +34,16 @@ public abstract class TestCaseBase extends TestCase {
 		return new WebDriverFactory() {
 			@Override
 			public WebDriver create() {
+				FirefoxBinary binary = new FirefoxBinary();
+				File firefoxProfileFolder = new File(
+						"/Users/kanamoto_shota/Library/Application Support/Firefox/Profiles");
+				FirefoxProfile myprofile = new FirefoxProfile(firefoxProfileFolder);
+				myprofile.setPreference("browser.download.folderList", 1);
+				myprofile.setPreference("browser.download.manager.showWhe‌​nStarting", false);
+				myprofile.setPreference("browser.helperApps.neverAsk.saveT‌​oDisk",
+						"image/jpeg, application/x-msexcel, application/octet-stream");
 				System.setProperty("webdriver.gecko.driver", "driver/geckodriver");
-				return new FirefoxDriver();
+				return new FirefoxDriver(myprofile);
 			}
 		};
 	}
